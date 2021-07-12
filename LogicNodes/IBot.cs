@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gira_com_by.Logic.Nodes.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace gira_com_by.Logic.Nodes
 {
     public interface IBot
     {
-        Task SendMessageAsync(string message);
+        Task<long> SendMessageAsync(string message);
     }
 }
