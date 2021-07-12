@@ -14,7 +14,7 @@ namespace gira_com_by.Logic.Nodes
     {
         private static readonly ITelegramBotClient telegramBotClient = new TelegramBotClient(token: Secret.BotToken);
         private readonly string baseUri = "https://api.telegram.org/";
-        public async Task<long> SendMessageAsync(string message)
+        public async Task<int> SendMessageAsync(string message)
         {
             var responceMessage = await telegramBotClient.SendTextMessageAsync(
                 chatId: Secret.ChatId,
@@ -24,7 +24,7 @@ namespace gira_com_by.Logic.Nodes
             {
                 return responceMessage.MessageId;
             }
-            return -1L;
+            return -1;
         }
         public async Task<long> GetChatIdAsync()
         {
