@@ -26,14 +26,14 @@ namespace gira_com_by.Logic.Nodes
             }
             return -1;
         }
-        public async Task<long> GetChatIdAsync()
-        {
-            string reqPath = String.Concat(baseUri, "bot", Secret.BotToken, "/getUpdates");
-            Uri request = new Uri(reqPath);
-            HttpClient httpClient = new HttpClient();
-            var responce = await httpClient.GetAsync(request);
-            var updateResponce = JsonConvert.DeserializeObject<Root>(await responce.Content.ReadAsStringAsync());
-            return updateResponce.Result.FirstOrDefault().Message.Chat.Id;
-        }
+        //public async Task<long> GetChatIdAsync()
+        //{
+        //    string reqPath = String.Concat(baseUri, "bot", Secret.BotToken, "/getUpdates");
+        //    Uri request = new Uri(reqPath);
+        //    HttpClient httpClient = new HttpClient();
+        //    var responce = await httpClient.GetAsync(request);
+        //    var updateResponce = JsonConvert.DeserializeObject<Root>(await responce.Content.ReadAsStringAsync());
+        //    return updateResponce.Result.FirstOrDefault().Message.Chat.Id;
+        //}
     }
 }
