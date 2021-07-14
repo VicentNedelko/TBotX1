@@ -33,7 +33,7 @@ namespace gira_com_by.Logic.Nodes
     
         public override void Startup()
         {
-            bot = new TBot();
+            //bot = new TBot();
         }
 
         public override async void Execute()
@@ -41,6 +41,7 @@ namespace gira_com_by.Logic.Nodes
             
             if (this.Send.WasSet && this.Send.Value)
             {
+                bot = new TBot();
                 _ = await bot.SendMessageAsync(Message); // message FB state OnSuccess
             }
         }
