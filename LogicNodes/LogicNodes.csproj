@@ -67,7 +67,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Root.cs" />
-    <Compile Include="Node.cs" />
+    <Compile Include="TelegramNode.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

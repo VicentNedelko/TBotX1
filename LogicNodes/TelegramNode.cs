@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace gira_com_by.Logic.Nodes
 {
-  public class Node : LogicNodeBase
+  public class TelegramNode : LogicNodeBase
   {
         private readonly ITypeService typeService;
         private IBot bot;
 
-        [Parameter(DisplayOrder = 1, IsRequired = true)]
+        [Parameter(DisplayOrder = 1, IsRequired = true, InitOrder = 2)]
         public StringValueObject Message { get; private set; }
 
-        [Input(DisplayOrder = 2, IsDefaultShown = false, IsInput = true)]
+        [Input(DisplayOrder = 2, IsDefaultShown = false, IsInput = true, InitOrder = 1)]
         public BoolValueObject Send { get; private set; }
 
+        [Output(DisplayOrder = 1)]
+        public BoolValueObject Result { get; private set; }
 
 
-
-
-        public Node(INodeContext context)
+        public TelegramNode(INodeContext context)
           : base(context)
         {
             context.ThrowIfNull("context");
@@ -29,20 +29,19 @@ namespace gira_com_by.Logic.Nodes
             this.typeService = context.GetService<ITypeService>();
             this.Message = typeService.CreateString(PortTypes.String, "Message", "Empty");
             this.Send = typeService.CreateBool(PortTypes.Binary, "Send", false);
+            this.Result = typeService.CreateBool(PortTypes.Switch, "Result");
         }
     
         public override void Startup()
         {
-            //bot = new TBot();
+            bot = new TBot();
         }
 
         public override async void Execute()
         {
-            
             if (this.Send.WasSet && this.Send.Value)
             {
-                bot = new TBot();
-                _ = await bot.SendMessageAsync(Message); // message FB state OnSuccess
+                this.Result.Value = await bot.SendMessageAsync(Message);
             }
         }
   }

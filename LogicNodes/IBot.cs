@@ -9,6 +9,6 @@ namespace gira_com_by.Logic.Nodes
 {
     public interface IBot
     {
-        Task<int> SendMessageAsync(string message);
+        Task<bool> SendMessageAsync(string message);
     }
 }

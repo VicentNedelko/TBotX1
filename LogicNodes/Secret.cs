@@ -8,7 +8,7 @@ namespace gira_com_by.Logic.Nodes
 {
     public class Secret
     {
-        public static string BotToken { get; } = "1708987680:AAEuqfqY6gesBkJrWgv99S9QqYMrQn8nrCk";
+        public static string BotToken { get; } = "1987317825:AAGWK_-w_WN5eWf3YxYrwLyYARcx19c4zhU";
         public static long ChatId { get; } = 481679093;
     }
 }
